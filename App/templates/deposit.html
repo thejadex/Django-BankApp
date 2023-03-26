@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Deposit
+{% endblock title %}
+    
+{% block body %}
+
+
+    {% include 'core/navbar.html' %}
+        {% comment %} Contains Link to different pages {% endcomment %}
+    <div class="navbar">
+        {% comment %} Should be link to account dashboard {% endcomment %}
+        <a href="{% url 'homepage' %}" class="{% if request.path == '/' %}active{% endif %}">DASHBOARD</a>
+
+        <a href="{% url 'deposit' %}" class="{% if 'deposit' in request.path %}active{% endif %}">DEPOSIT</a>
+        <a href="{% url 'withdraw' %}" class="{% if 'withdraw' in request.path %}active{% endif %}">WITHDRAW</a>
+        <a href="{% url 'transfer' %}" class="{% if 'transfer' in request.path %}active{% endif %}">TRANSFER</a>
+        <a href="{% url 'logout' %}" class="{% if 'logout' in request.path %}active{% endif %}">LOGOUT</a>
+
+    </div>
+
+
+{% endblock body %}

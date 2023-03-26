@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    SignUp
+{% endblock title %}
+    
+{% block body %}
+
+    {% include 'core/navbar.html' %}
+    
+        {% comment %} Contains Link to different pages {% endcomment %}
+    <div class="navbar">
+        <a href="{% url 'homepage' %}" class="{% if request.path == '/' %}active{% endif %}">HOME</a>
+        <a href="{% url 'signup' %}" class="{% if 'signup' in request.path %}active{% endif %}">SIGNUP</a>
+        <a href="{% url 'login' %}" class="{% if 'login' in request.path %}active{% endif %}">LOGIN</a>
+    </div>
+
+    
+{% endblock body %}

@@ -10,9 +10,12 @@
     
         {% comment %} Contains Link to different pages {% endcomment %}
     <div class="navbar">
-        <a href="{% url 'homepage' %}" class="{% if request.path == '/' %}active{% endif %}">HOME</a>
-        <a href="{% url 'signup' %}" class="{% if 'signup' in request.path %}active{% endif %}">SIGNUP</a>
-        <a href="{% url 'login' %}" class="{% if 'login' in request.path %}active{% endif %}">LOGIN</a>
+        <a href="{% url 'homepage' %}" class="{% if request.path == '/' %}active{% endif %}"><img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" alt="bankLogo" width="60vh"></a>
+
+        <div class="navbar-links">
+            <a href="{% url 'login' %}" class="{% if 'login' in request.path %}active{% endif %}">LOGIN</a>
+            <a href="{% url 'signup' %}" class="{% if 'signup' in request.path %}active{% endif %}">SIGN UP</a>
+        </div>
     </div>
 
     

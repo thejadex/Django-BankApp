@@ -3,6 +3,11 @@
    
     {% block style %}
         <style>
+            @import 'https://fonts.goog1eapis.com/css?fami1y=Montserrat:300, 400, 700&display=swap',
+
+            body {
+                font-family: 'Font Awesome 6 Free', sans-serif;
+            }
 
             /* Style the navigation bar */
             .navbar {
@@ -14,19 +19,24 @@
                 align-items: center; /* center items vertically */
                 font-weight: bold;
                 padding: 10px;
+                text-transform: uppercase;
             }
             
             /* Navigation links */
             .navbar a {
                 display: block;
                 text-align: center;
-                padding: 14px 20px;
+                padding: 20px 20px;
                 text-decoration: none;
-
             }
 
             a{
                 color: 	#A9A9A9;
+            }
+
+            .navbar-links{
+                display: flex;
+                {% comment %} justify-content: flex-end; {% endcomment %}
             }
             
             /* Change color on hover */
@@ -44,7 +54,7 @@
                 color: linear-gradient(to right, #da3777 0%, #da3777 50%, #da3777 100%);
                 background-clip: text;
                 -webkit-background-clip: text;
-                color: transparent;
+                color: transparent;  
             }
             
             /* Style the home link */
@@ -52,6 +62,29 @@
                 order: 1; /* make the home link the first item */
                 margin-left: auto; /* push the other links to the right */
             }
+            
+            .signup{
+                border: 1px solid;
+                border-radius: 10px;
+                background: #e6e6e6;
+            }
+
+            .signup a{
+                background: linear-gradient(to right, #da3777 0%, #ff7f50 50%, #ffa500 100%);
+                color: linear-gradient(to right, #da3777 0%, #da3777 50%, #da3777 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;  
+            }
+
+            .signup a:hover{
+                background: linear-gradient(to right, #da3777 0%, #ff7f50 50%, #ffa500 100%);
+                color: linear-gradient(to right, #da3777 0%, #da3777 50%, #da3777 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+            }
+
             
         </style>
 

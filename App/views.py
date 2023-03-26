@@ -28,9 +28,10 @@ def loginUser(request):
 
 
 def logoutUser(request):
+
     logout(request)
     messages.success(request, ("You have been logged out!"))
-    return redirect('homepage')
+    return redirect('login')
 
 def signup(request):
     return render(request, 'signup.html')

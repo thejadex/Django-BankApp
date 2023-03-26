@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'App',    
+    # 'fontawesomefree',
     # 'crispy_forms',
     # "crispy_bootstrap5",
     

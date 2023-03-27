@@ -1,41 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Deposit
+    LotusBank | Deposit
 {% endblock title %}
     
 {% block body %}
 
-
-    {% include 'core/navbar.html' %}
-        {% comment %} Contains Link to different pages {% endcomment %}
-    <div class="navbar">
-        {% comment %} Should be link to account dashboard {% endcomment %}
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" alt="bankLogo" width="100px">
-        
-        <div class="navbar-links">
-            
-            <a href="{% url 'homepage' %}" class="{% if request.path == '/' %}active{% endif %}">
-                <i class="fa-solid fa-house-user"></i> Dashboard
-            </a>
-            <a href="{% url 'deposit' %}" class="{% if 'deposit' in request.path %}active{% endif %}">
-                <i class="fa-solid fa-landmark fa-shake"></i> Deposit
-            </a>
-
-            <a href="{% url 'withdraw' %}" class="{% if 'withdraw' in request.path %}active{% endif %}">
-                <i class="fa-solid fa-wallet"></i> Withdraw
-            </a>
-
-            <a href="{% url 'transfer' %}" class="{% if 'transfer' in request.path %}active{% endif %}">
-                <i class="fa-solid fa-paper-plane fa-bounce"></i> Transfer
-            </a>
-
-            <a href="{% url 'logout' %}" class="{% if 'logout' in request.path %}active{% endif %}">
-                Logout <i class="fa-solid fa-right-from-bracket"></i>
-            </a>
-        </div>
-
-    </div>
-
+    {% include 'core/appNavBar.html' %}
 
 {% endblock body %}

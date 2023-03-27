@@ -52,31 +52,33 @@
             </div>
         </div>
 
+        {% comment %} Registration Form {% endcomment %}
         <form action="{% url 'signup' %}" method='post' class="form-right">
             {% csrf_token %}
-            <h2 class="text-uppercase">Registration form</h2>
+            <h2 class="text-uppercase">Create Your Account</h2>
             <div class="row">
                 <div class="col-sm-6 mb-3">
-                    <label>First Name</label>
-                    <input type="text" name="first_name" id="first_name" class="input-field">
+                    <label>{{ form.first_name.label }}</label>
+                    <input type="text" name="{{ form.first_name.name }}" value="{{ form.first_name.value }}" id="first_name" class="input-field">
                 </div>
                 <div class="col-sm-6 mb-3">
-                    <label>Last Name</label>
-                    <input type="text" name="last_name" id="last_name" class="input-field">
+                    <label>{{ form.last_name.label }}</label>
+                    <input type="text" name="{{ form.last_name.name }}" value="{{ form.last_name.value }}" id="last_name" class="input-field">
                 </div>
             </div>
             <div class="mb-3">
-                <label>Your Email</label>
-                <input type="email" class="input-field" name="email" required>
+                <label>{{ form.email.label }}</label>
+                <input type="email" name="{{ form.email.name }}" value="{{ form.email.value }}" class="input-field" required>
             </div>
             <div class="row">
                 <div class="col-sm-6 mb-3">
-                    <label>Password</label>
-                    <input type="password" name="pwd" id="pwd" class="input-field">
+                    <label>{{ form.password1.label }}</label>
+                    {% comment %} <input type="password" name="pwd" id="pwd" class="input-field"> {% endcomment %}
+                    <input type="password" name="{{ form.password1.name }}" value="{{ form.password1.value }}" id="pwd" class="input-field">
                 </div>
                 <div class="col-sm-6 mb-3">
-                    <label>Current Password</label>
-                    <input type="password" name="cpwd" id="cpwd" class="input-field">
+                    <label>Retype Password</label>
+                    <input type="password" name="{{ form.password2.name }}" value="{{ form.password2.value }}" id="pwd" class="input-field">
                 </div>
             </div>
             <div class="mb-3">

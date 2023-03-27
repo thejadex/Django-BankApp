@@ -49,6 +49,9 @@ def signup(request):
     return render(request, 'signup.html', {'form':form})
     
 
+def dashboard(request):
+    return render(request, 'dashboard.html')
+
 
 def deposit(request):
     return render(request, 'deposit.html')

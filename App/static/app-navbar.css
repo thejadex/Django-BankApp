@@ -1,0 +1,53 @@
+/* Style the navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: #eeeeee;
+    font-family: Arial, sans-serif;
+    display: flex; /* add flex display */
+    justify-content: space-between; /* space items evenly */
+    align-items: center; /* center items vertically */
+    font-weight: bold;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+/* Navigation links */
+.navbar a {
+    display: block;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+}
+
+a{
+    color: 	#A9A9A9;
+}
+
+.navbar-links{
+    display: flex;
+    /* {% comment %} justify-content: flex-end; {% endcomment %} */
+}
+
+/* Change color on hover */
+.navbar a:hover {
+    background: linear-gradient(to right, #da3777 0%, #ff7f50 50%, #ffa500 100%);
+    color: linear-gradient(to right, #da3777 0%, #da3777 50%, #da3777 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Active link */
+.active {
+    background: linear-gradient(to right, #da3777 0%, #ff7f50 50%, #ffa500 100%);
+    color: linear-gradient(to right, #da3777 0%, #da3777 50%, #da3777 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;  
+}
+
+/* Style the home link */
+.navbar .home-link {
+    order: 1; /* make the home link the first item */
+    margin-left: auto; /* push the other links to the right */
+}

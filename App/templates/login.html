@@ -10,17 +10,8 @@
 
     <link rel="stylesheet" href="{% static 'login.css' %}">
 
-    {% comment %} Message Alert For Failed Login {% endcomment %}
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  {{ message }}
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        {% endfor %}
-    {% endif %}
 
-    {% comment %} Login Form {% endcomment %}
+    {% comment %} Login Form. {% endcomment %}
     <section class="h-100 gradient-form" style="background-color: #eee;">
           <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -39,18 +30,28 @@
                           
                         </div>
         
-                          <form action="" method="post">
+                          <form action="" method="POST">
                           {% csrf_token %}
                           
                               <div class="form-outline mb-4">
-                                  <input type="email" id="form2Example11" class="form-control"
-                                  placeholder="Email Address" name="email" />
+                                <input type="text" class="form-control" name="username" aria-describedby="emailHelp" placeholder="Username">
                               </div>
           
                               <div class="form-outline mb-4">
-                                  <input type="password" id="form2Example22" class="form-control" name="password" />
+                                  <input type="password" class="form-control" name="password" placeholder="Password">
                               </div>
-          
+                              
+                              {% comment %} Message Alert For Failed Login {% endcomment %}
+                              {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                          {{ message }}
+                                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% endfor %}
+                              {% endif %}
+
+
                               <div class="text-center pt-1 mb-5 pb-1">
                                   <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" style="width: 200px; height: 40px">
                                     Login
@@ -69,7 +70,8 @@
                     </div>
                       <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                           <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                          <h4 class="mb-4">Your Trusted Financial Services &nbsp We're more than a Bank  </h4>
+                          <h4 class="mb-4">Your <span style="color: #A9A9A9"> Trusted </span> Financial Services. <br>
+                            We're more than a <span style="color: #A9A9A9"> Bank! </span></h4>
                           <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                               tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                               exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>

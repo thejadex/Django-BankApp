@@ -6,8 +6,8 @@
     
 {% block body %}
 
-{% include 'core/app_navbar.html' %}
-
-    <p>Dashboard</p>
+    {% include 'core/app_navbar.html' %}
+    
+    <p>{{user.first_name}}</p>
 
 {% endblock body %}

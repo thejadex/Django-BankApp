@@ -21,17 +21,17 @@
         {% include 'core/navbar.html' %}
         {% comment %} Contains Link to different pages {% endcomment %}
         <nav class="navbar">
-                {% comment %} <a href="{% url 'homepage' %}" class="{% if request.path == '/' %}active{% endif %}">{% endcomment %}<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" alt="bankLogo" style="width: 100px"> 
-                {% comment %} <a href="{% url 'login' %}" class="{% if 'login' in request.path %}active{% endif %}">LOGIN</a> {% endcomment %}
+            <a href="{% url 'homepage'%}"><img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" alt="bankLogo" width="100px"></a>
 
                 <div class="navbar-links">
-                    <a href="{% url 'homepage' %}">Home</a>
+                    {% comment %} <a href="{% url 'homepage' %}">Home</a> {% endcomment %}
                     
-                    {% if user.is_authenticated %}
+                    {% comment %} {% if user.is_authenticated %}
                         <a href="{% url 'logout' %}" class="{% if 'logout' in request.path %}active{% endif %}">Logout</a>
-                    {% else %}
+                    {% endif %} {% endcomment %}
+                    {% comment %} {% else %} {% endcomment %}
                         <a href="{% url 'login' %}" class="{% if 'login' in request.path %}active{% endif %}">Login</a>
-                    {% endif %}
+                    {% comment %} {% endif %} {% endcomment %}
 
                     <div class="signup">
                         <a href="{% url 'signup' %}" class="{% if 'signup' in request.path %}active{% endif %}">Sign Up</a>

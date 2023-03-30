@@ -26,16 +26,16 @@
                 <div class="navbar-links">
                     {% comment %} <a href="{% url 'homepage' %}">Home</a> {% endcomment %}
                     
-                    {% comment %} {% if user.is_authenticated %}
+                    {% if user.is_authenticated %}
                         <a href="{% url 'logout' %}" class="{% if 'logout' in request.path %}active{% endif %}">Logout</a>
-                    {% endif %} {% endcomment %}
-                    {% comment %} {% else %} {% endcomment %}
+                    {% else %}
                         <a href="{% url 'login' %}" class="{% if 'login' in request.path %}active{% endif %}">Login</a>
-                    {% comment %} {% endif %} {% endcomment %}
+                        <div class="signup">
+                            <a href="{% url 'signup' %}" class="{% if 'signup' in request.path %}active{% endif %}">Sign Up</a>
+                        </div>
+                    {% endif %}
 
-                    <div class="signup">
-                        <a href="{% url 'signup' %}" class="{% if 'signup' in request.path %}active{% endif %}">Sign Up</a>
-                    </div>
+                    
                 </div>
         </nav>
 

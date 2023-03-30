@@ -49,28 +49,23 @@ def signup(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f'Hi {username}, your account was created successfully')
             return redirect('login')
-        else:
-            errors = form.errors.as_data()
-            for field, error_list in errors.items():
-                for error in error_list:
-                    messages.error(request, f"{field}: {error.message}")
     else:
         form = CreateUserForm()
 
     return render(request, 'signup.html', {'form': form})
     
-@login_required
+
 def dashboard(request):
     return render(request, 'dashboard.html')
 
-@login_required
+
 def deposit(request):
     return render(request, 'deposit.html')
 
-@login_required
+
 def withdraw(request):
     return render(request, 'withdraw.html')
 
-@login_required
+
 def transfer(request):
     return render(request, 'transfer.html')

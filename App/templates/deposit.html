@@ -8,4 +8,11 @@
 
     {% include 'core/app_navbar.html' %}
 
+    <h2>Make a Deposit</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
 {% endblock body %}

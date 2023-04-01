@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .forms import CreateUserForm
+from .forms import CreateUserForm, DepositForm
 
 # Create your views here.
 
@@ -29,8 +30,6 @@ def loginUser(request):
 	else:
 		return render(request, 'login.html')
 
-        
-                    
     
 # Authenticate Logout Request
 def logoutUser(request):
@@ -55,17 +54,40 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
     
 
+""""
+    Main Fuctions of the App. 
+        When a user is not authenticated, they can't access these pages.  
+        Hence, redirected to the login page - [@login_required]
+"""    
+
+@login_required(login_url='login')
 def dashboard(request):
     return render(request, 'dashboard.html')
 
-
+@login_required(login_url='login')
 def deposit(request):
-    return render(request, 'deposit.html')
+        
+    if request.method == 'POST':
+        if request.method == 'POST':
+            form = DepositForm(request.POST)
+            if form.is_valid():
+                deposit = form.save(commit=False)
+                deposit.user = request.user
+                deposit.user_id = request.user.id
+                deposit.first_name = request.user.first_name
+                deposit.last_name = request.user.last_name
+                deposit.username = request.user.username
+                deposit.save()
+            return redirect('dashboard')
+    else:
+        form = DepositForm()
+    
+    return render(request, 'deposit.html', {'form': form})
 
-
+@login_required(login_url='login')
 def withdraw(request):
     return render(request, 'withdraw.html')
 
-
+@login_required(login_url='login')
 def transfer(request):
     return render(request, 'transfer.html')

@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Deposit, UserAccount,Withdraw
+from .models import Deposit, Transfer, Withdraw, UserAccount
 
 
 class CreateUserForm(UserCreationForm):
@@ -31,22 +31,19 @@ class DepositForm(forms.ModelForm):
         fields = ['amount']
 
 
-# class TransferForm(forms.Form):
-#     sender_account_number = forms.CharField(max_length=20)
-#     recipient_account_number = forms.CharField(max_length=20)
-#     amount = forms.DecimalField(max_digits=10, decimal_places=2)
 
 class TransferForm(forms.Form):
-    recipient_account_number = forms.IntegerField(label='Recipient Account Number')
-    amount = forms.DecimalField(max_digits=10, decimal_places=2)
 
-    # def clean_recipient_account_number(self):
-    #     account_number = self.cleaned_data['recipient_account_number']
-    #     try:
-    #         UserAccount.objects.get(account_number=account_number)
-    #     except UserAccount.DoesNotExist:
-    #         raise forms.ValidationError("Account with that number does not exist.")
-    #     return account_number
+    receiver_account = forms.CharField(max_length=10, label='Beneficiary Account')
+    amount = forms.DecimalField(max_digits=10, decimal_places=2)
+    
+    def clean_recipient_account_number(self):
+        account_number = self.cleaned_data['receiver_accountNumber']
+        try:
+            UserAccount.objects.get(account_number=account_number)
+        except UserAccount.DoesNotExist:
+            raise forms.ValidationError("Account with that number does not exist.")
+        return account_number
     
 
 class WithdrawalForm(forms.ModelForm):

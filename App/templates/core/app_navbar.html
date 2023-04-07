@@ -19,14 +19,14 @@
                 <i class="fa-solid fa-landmark fa-shake"></i> Deposit
             </a>
 
-            <a href="{% url 'withdraw' %}" class="{% if 'withdraw' in request.path %}active{% endif %}">
-                <i class="fa-solid fa-wallet"></i> Withdraw
-            </a>
-
             <a href="{% url 'transfer' %}" class="{% if 'transfer' in request.path %}active{% endif %}">
                 <i class="fa-solid fa-paper-plane fa-bounce"></i> Transfer
             </a>
 
+            <a href="{% url 'withdraw' %}" class="{% if 'withdraw' in request.path %}active{% endif %}">
+                <i class="fa-solid fa-wallet"></i> Withdraw
+            </a>
+            
             <a href="{% url 'logout' %}" class="{% if 'logout' in request.path %}active{% endif %}">
                 Logout <i class="fa-solid fa-right-from-bracket"></i>
             </a>

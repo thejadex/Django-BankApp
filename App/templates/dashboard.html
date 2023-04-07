@@ -8,6 +8,21 @@
 
     {% include 'core/app_navbar.html' %}
     
-    <p>{{ user.username }}</p>
+    <h1>Welcome, {{ user.username }}!</h1>
+    <hr>
+    <p>Here are your account details:</p>
+    <p>Account Number: {{ user_account.account_number }}</p>
+    <p>Account Balance: ${{ user_account.account_balance }}</p>
+
+   {% comment %} Message Alert For Failed Login & Other Messages {% endcomment %}
+   {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
 
 {% endblock body %}

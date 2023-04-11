@@ -40,7 +40,7 @@ class Deposit(models.Model):
 class Transfer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     sender_account = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name='sent_transaction')
-    receiver_username = models.CharField(max_length=30)
+    sender_username = models.CharField(max_length=30)
     receiver_account = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name='received_transaction')
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateTimeField(auto_now_add=True)

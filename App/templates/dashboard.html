@@ -9,35 +9,55 @@
 {% block body %}
 
     {% include 'core/app_navbar.html' %}
+    <link rel="stylesheet" href="{% static 'custom-alert.css' %}">
+    <link rel="stylesheet" href="{% static 'dashBoard.css' %}">
 
-    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
-    <link rel="stylesheet" href="{% static 'alert.css' %}">
-    
+
     
     <div class="dashboard">
-        <h2>Welcome to your DashBoard, {{ user.username }}!</h2>
-        <hr>
-        <p>Here you can find all your important information</p>
-            <div class="basic-data">
-                <ul>
-                    <li>First Name: {{ user.first_name }}</li>
-                    <li>Last Name: {{ user.last_name }}</li>
-                    <li>Email Address: {{ user.email }}</li>
-                </ul>
+        <div class="dashboard-container">
+
+            <div class="intro">
+                <h2>Welcome back, <span>{{ user.username }}!</span></h2>
+                <hr>
             </div>
-        <p>Account Number: {{ user_account.account_number }}</p>
-        <p>Account Balance: ${{ user_account.account_balance }}</p>
+
+            <div class="main-details">
+                <p>Here you can find all your important informations</p> <br>
+
+                    <div class="col-md-12">
+                        <ul>
+                            <li>
+                                <li>First Name: <span>{{ user.first_name }}</span></li>
+                                
+                                <li>Last Name: <span>{{ user.last_name }}</span></li>
+                                <li>Email Address: <span style="text-transform: lowercase">{{ user.email }}</span></li>
+                                <li>Account Number: <span>{{ user_account.account_number }}</span></li>
+                                <li>Account Balance: <span>${{ user_account.account_balance }}</span></li>
+                            </li>
+                        </ul>
+                    </div>
+
+                
+            </div>
+
+            {% comment %} Message Alert For Failed Login & Other Messages {% endcomment %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-custom alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        </div>
         
-           {% comment %} Message Alert For Failed Login & Other Messages {% endcomment %}
-           {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-custom alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endfor %}
-        {% endif %}
+
+
     </div>
+      
+      
       
 
 {% endblock body %}

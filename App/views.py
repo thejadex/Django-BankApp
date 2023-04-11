@@ -79,7 +79,6 @@ def dashboard(request):
 
 
 
-
 @login_required(login_url='login')
 def deposit(request):
         
@@ -116,14 +115,14 @@ def transfer(request):
 
         if form.is_valid():
             receiver_account = form.cleaned_data['receiver_account']
-            receiver_account =UserAccount.objects.filter(account_number=receiver_account).first()
+            receiver_account = UserAccount.objects.filter(account_number=receiver_account).first()
             amount = float(request.POST.get('amount'))
             
             sender_account = UserAccount.objects.get(user=request.user)
 
             # Check if sender and receiver's accounts are the same/
             if sender_account == receiver_account:
-                form.add_error(None, "Beneficiary account must be different from yours.")
+                messages.success(request, "Beneficiary account must be different from yours.")
                 return render(request, 'transfer.html', {'form': form})
 
             # Checks if the sender has enough balance to make a transfer.
@@ -148,7 +147,7 @@ def transfer(request):
                 transfer = Transfer.objects.create(sender_account=sender_account, 
                                                    receiver_account=receiver_account, 
                                                    amount=amount, user=request.user, 
-                                                   receiver_username = request.user.username)
+                                                   sender_username = request.user.username)
                 transfer.save()
 
                 messages.success(request, f'Your Transfer of ${amount} was successful.')

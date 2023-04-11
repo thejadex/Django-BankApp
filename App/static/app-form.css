@@ -59,7 +59,7 @@
 @media screen and (max-width: 768px) {
     .form-container {
         height: auto;
-        padding: 40px;
+        padding: 20px;
     }
     .transaction-form {
         width: 100%;

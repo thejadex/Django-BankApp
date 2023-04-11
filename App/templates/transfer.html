@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block title %}
     LotusBank | Transfer
@@ -7,42 +8,42 @@
 {% block body %}
 
   {% include 'core/app_navbar.html' %}
-
-  <style>
-    .alert-custom{
-
-    /* fallback for old browsers */
-    background: #fccb90;
-
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-
-    color: #fff;
-
-    }
-  </style>
+  <link rel="stylesheet" href="{% static 'alert.css' %}">
+  <link rel="stylesheet" href="{% static 'app-form.css' %}">
 
 
     <div>
-      <h1>Transfer money</h1>
-      <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Transfer</button>
-      </form>
-      <br>
-      {% comment %} Message Alert For Failed Login & Other Messages {% endcomment %}
-          {% if messages %}
-      {% for message in messages %}
-          <div class="alert alert-custom alert-dismissible fade show" role="alert">
-            <i class="fa-solid fa-triangle-exclamation"></i> {{ message }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+      <div class="form-container">
+        <form class="transaction-form" method="POST">
+          <h2>Transfer</h2> <hr><br>
+          {% csrf_token %}
+
+          <div class="form-group">
+            <label for="receiver_account">{{ form.receiver_account.label }}</label>
+            {{ form.receiver_account }}
           </div>
-      {% endfor %}
-        {% endif %}
+
+          <div class="form-group">
+            <label for="amount">{{ form.amount.label }}</label>
+            {{ form.amount }}
+          </div>
+
+          {% comment %} Message Alert For Failed Login & Other Messages {% endcomment %}
+          {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <i class="fa-solid fa-triangle-exclamation"></i> {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+          {% endif %}
+
+          <button type="submit">TRANSFER</button>
+
+        </form>
+      </div>
+    
     </div>
 
 {% endblock body %}

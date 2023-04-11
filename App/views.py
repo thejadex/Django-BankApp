@@ -98,7 +98,7 @@ def deposit(request):
             user_account = UserAccount.objects.get(user=request.user)
             user_account.account_balance += amount
             user_account.save()
-            messages.success(request, f'Your deposit of {amount} was successful!')
+            messages.success(request, f'Your deposit of ${amount} was successful!')
         return redirect('dashboard')
     else:
         form = DepositForm()
@@ -123,7 +123,7 @@ def transfer(request):
 
             # Check if sender and receiver's accounts are the same/
             if sender_account == receiver_account:
-                form.add_error(None, "Sender and Receiver accounts must be different.")
+                form.add_error(None, "Beneficiary account must be different from yours.")
                 return render(request, 'transfer.html', {'form': form})
 
             # Checks if the sender has enough balance to make a transfer.
@@ -151,7 +151,7 @@ def transfer(request):
                                                    receiver_username = request.user.username)
                 transfer.save()
 
-                messages.success(request, f'Your Transfer of {amount} was successful.')
+                messages.success(request, f'Your Transfer of ${amount} was successful.')
                 
                 
                 return redirect('dashboard')
@@ -191,7 +191,7 @@ def withdraw(request):
 
                 user_account.account_balance -= amount
                 user_account.save()
-                messages.success(request, f'Withdrawal of {amount} was successful!')
+                messages.success(request, f'Withdrawal of ${amount} was successful!')
 
             elif amount > user_account.account_balance:
                 messages.error(request, f'Withdrawal cannot be more than your account balance')

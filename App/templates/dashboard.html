@@ -1,47 +1,43 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block title %}
     LotusBank | Dashboard 
 {% endblock title %}
-    
+
+
 {% block body %}
 
-    <style>
-        .alert-custom{
-
-        /* fallback for old browsers */
-        background: #fccb90;
-        
-        /* Chrome 10-25, Safari 5.1-6 */
-        background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-        
-        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-
-        color: #fffffff;
-    
-        }
-    </style>
-
-
-
     {% include 'core/app_navbar.html' %}
+
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'alert.css' %}">
     
-    <h1>Welcome, {{ user.username }}!</h1>
-    <hr>
-    <p>Here are your account details:</p>
-    <p>Account Number: {{ user_account.account_number }}</p>
-    <p>Account Balance: ${{ user_account.account_balance }}</p>
-
-   {% comment %} Message Alert For Failed Login & Other Messages {% endcomment %}
-   {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-custom alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    
+    <div class="dashboard">
+        <h2>Welcome to your DashBoard, {{ user.username }}!</h2>
+        <hr>
+        <p>Here you can find all your important information</p>
+            <div class="basic-data">
+                <ul>
+                    <li>First Name: {{ user.first_name }}</li>
+                    <li>Last Name: {{ user.last_name }}</li>
+                    <li>Email Address: {{ user.email }}</li>
+                </ul>
             </div>
-        {% endfor %}
-    {% endif %}
-
+        <p>Account Number: {{ user_account.account_number }}</p>
+        <p>Account Balance: ${{ user_account.account_balance }}</p>
+        
+           {% comment %} Message Alert For Failed Login & Other Messages {% endcomment %}
+           {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-custom alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+      
 
 {% endblock body %}

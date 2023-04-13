@@ -22,7 +22,7 @@ Install the required packages using pip
 <li>Create a new PostgreSQL database with a name of your choice. </li> <br>
 <li>Edit the DATABASES configuration in Bank App/settings.py to match your PostgreSQL configuration.</li> <br>
 
-      '''DATABASES = { 
+      DATABASES = { 
         'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'your-db-name',
@@ -31,7 +31,7 @@ Install the required packages using pip
         'HOST': 'localhost',
         'PORT': '5432',
         }
-      }'''
+      }
     
 <hr>
 

@@ -11,7 +11,7 @@ Django Bank App is a web-based banking application built using Django framework.
 <h1> Getting Started </h1>
   <h3>Installation</h3>
       <p>Clone this repository to your local machine</p>
-      <li>git clone https://github.com/your-username/bank-app.git <br></li>
+      <li>git clone https://github.com/TheJadeX/BankApp <br></li>
       <hr>
 
 Install the required packages using pip
@@ -22,7 +22,7 @@ Install the required packages using pip
 <li>Create a new PostgreSQL database with a name of your choice. </li> <br>
 <li>Edit the DATABASES configuration in Bank App/settings.py to match your PostgreSQL configuration.</li> <br>
 
-      '''DATABASES = { 
+      DATABASES = { 
         'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'your-db-name',
@@ -31,7 +31,7 @@ Install the required packages using pip
         'HOST': 'localhost',
         'PORT': '5432',
         }
-      }'''
+      }
     
 <hr>
 

@@ -1,10 +1,11 @@
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User # This allows us to use the built in model 
 from .models import Deposit, Transfer, Withdraw, UserAccount
 
 
+# This form is used to create a form for a user when signing up.
 class CreateUserForm(UserCreationForm):
 
     # first_name = forms.CharField(max_length=30, required=True)
@@ -24,6 +25,7 @@ class CreateUserForm(UserCreationForm):
         }
 
 
+# This form is used to create a form for a user making a deposit.
 class DepositForm(forms.ModelForm):
 
     class Meta:
@@ -31,7 +33,7 @@ class DepositForm(forms.ModelForm):
         fields = ['amount']
 
 
-
+# This form is used to create a form for a user making a transfer.
 class TransferForm(forms.Form):
 
     receiver_account = forms.CharField(max_length=10, label='Beneficiary Account')
@@ -46,6 +48,7 @@ class TransferForm(forms.Form):
         return account_number
     
 
+# This form is used to create a form for a user making a withdrawal.
 class WithdrawalForm(forms.ModelForm):
 
     class Meta:

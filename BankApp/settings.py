@@ -22,6 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-6z8_g^d3!^re+*c-qp2-zsf!7us0bsd-io#_h9_qg(nsbm-@9+'
+# SECRET_KEY = 'foXUH4m61yRe7I0G1XbxleUvzo9T52WlQPXSKTnSEcxYhqOjxYbU1vTcYmE8i8TCz18J3MXJNHicanSwDUcgR7mma0Q9JZ4l64LP'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,15 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'App',    
-    # 'fontawesomefree',
-    # 'crispy_forms',
-    # "crispy_bootstrap5",
-    
+    # Main App
+    'App', 
+
+    # For encryption
+    'CryptographicFields',
 ]
 
-# CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-# CRISPY_TEMPLATE_PACK = "bootstrap5"
+# Encryption Key
+# CRYPTOGRAPHIC_KEY = "foXUH4m61yRe7I0G1XbxleUvzo9T52WlQPXSKTnSEcxYhqOjxYbU1vTcYmE8i8TCz18J3MXJNHicanSwDUcgR7mma0Q9JZ4l64LP"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -134,6 +135,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# LOGIN_REDIRECT_URL = 'login/'
-# LOGOUT_REDIRECT_URL = 'logout/'

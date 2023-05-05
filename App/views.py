@@ -7,10 +7,20 @@ from django.contrib import messages
 
 
 from .forms import CreateUserForm, DepositForm, TransferForm, WithdrawalForm
-from .models import Transfer, UserAccount
+from .models import Transfer, UserAccount 
 
 
 # Create your views here.
+
+"""
+    Terminology dictionary?
+
+    1. The | {'form': form} | allows the form to be rendered into the html templates.
+    2. | UserAccount.objects.get(user=request.user) | this allows us to get the object(s) created in the UserAccount model.
+    3. | form = Form(request.POST) | this means you're making use of the form and then you can render the form in the html template.
+    4. return render(request, 'signup.html', {'form': form}) -- "signup.html" here is the name of the html template we're rendering to.
+"""
+
 
 def homepage(request):
     return render(request, 'layout.html')
@@ -50,7 +60,7 @@ def signup(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            profile = UserAccount.objects.create(user=user) # Generates Account Number for each user
+            profile = UserAccount.objects.create(user=user) # Generates an Account Number for each user after a successful registration.
             username = request.user.get_username()
             login(request, user)
             username = form.cleaned_data.get('username')
@@ -58,6 +68,7 @@ def signup(request):
             return redirect('login')
         
     else:
+        # Displays a blank form if the user's request is a GET request.
         form = CreateUserForm()
 
     return render(request, 'signup.html', {'form': form})
@@ -83,9 +94,11 @@ def dashboard(request):
 def deposit(request):
         
     if request.method == 'POST':
-        form = DepositForm(request.POST)
-        if form.is_valid():
-            deposit = form.save(commit=False)
+        form = DepositForm(request.POST) 
+        if form.is_valid(): 
+            deposit = form.save(commit=False) # If the form is valid, save the form     
+
+            # Saves and displays the details of the user in the database associating each deposit with the right user.
             deposit.user = request.user
             deposit.user_id = request.user.id
             deposit.first_name = request.user.first_name
@@ -93,13 +106,17 @@ def deposit(request):
             deposit.username = request.user.username
             deposit.save()
 
+            # Get amount and add to existing amount of the user
             amount = float(request.POST.get('amount'))
             user_account = UserAccount.objects.get(user=request.user)
             user_account.account_balance += amount
             user_account.save()
+
+            # Message Success for successful deposit
             messages.success(request, f'Your deposit of ${amount} was successful!')
         return redirect('dashboard')
     else:
+        # Displays a blank form if the user's request is a GET request.
         form = DepositForm()
     
     return render(request, 'deposit.html', {'form': form})
@@ -163,6 +180,7 @@ def transfer(request):
                 return redirect('transfer')
         
     else:
+        # Displays a blank form if the user's request is a GET request.
         form = TransferForm()
 
     return render(request, 'transfer.html', {'form': form})
@@ -176,6 +194,8 @@ def withdraw(request):
         form = WithdrawalForm(request.POST)
         if form.is_valid():
             withdraw = form.save(commit=False)
+
+            # Saves and displays the details of the user in the database associating each withdrawal with the right user.
             withdraw.user = request.user
             withdraw.user_id = request.user.id
             withdraw.first_name = request.user.first_name
@@ -184,7 +204,7 @@ def withdraw(request):
             withdraw.save()
 
             user_account = UserAccount
-            user_account = UserAccount.objects.get(user=request.user)
+            user_account = UserAccount.objects.get(user=request.user) 
             amount = float(request.POST.get('amount'))
             if amount <= user_account.account_balance:
 
@@ -198,6 +218,7 @@ def withdraw(request):
                 
         return redirect('dashboard')
     else:
+        # Displays a blank form if the user's request is a GET request.
         form = WithdrawalForm()
 
     return render(request, 'withdraw.html',{"form": form})

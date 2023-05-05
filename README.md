@@ -54,6 +54,4 @@ Install the required packages using pip
         <li>Use the application to manage accounts, transfer funds, view transaction history, and more.</li>
     </ol> <hr>
 
-<h1>License</h1>
-    <p>Django Bank App is licensed under the MIT license. See LICENSE for more information.</p>
   

@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     # Main App
     'App', 
 
-    # For encryption
-    'CryptographicFields',
 ]
 
 # Encryption Key

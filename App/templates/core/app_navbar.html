@@ -1,13 +1,15 @@
 {% extends 'layout.html' %}
 {% load static %}
 
+
 {% block body %}
     <link rel="stylesheet" href="{% static 'app-navbar.css' %}">
 
     {% comment %} Navbar that contains links for main features of the app {% endcomment %}
-    <div class="navbar">
+    <div class="navbar" style="padding: 0;">
         {% comment %} Should be link to account dashboard {% endcomment %}
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" alt="bankLogo" width="100px">
+        
+        <a href="{% url 'homepage' %}"><img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" alt="bankLogo" width="100px"></a>
         
         <div class="navbar-links">
             

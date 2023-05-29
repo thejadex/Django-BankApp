@@ -1,0 +1,70 @@
+.section {
+    font-family: Arial, sans-serif;
+    border: 2px solid #f2f2f2;
+    box-shadow: 0 8px 20px 0px #1f1f1f1a;
+    background-color: #fdfdfd;
+    overflow: hidden;
+    color: #A9A9A9;
+    padding: 30px;
+    margin: 0 auto; /* Center the section */
+    margin-top: 20px;
+    width: 60%; /* Set the width of the section */
+    display: grid;
+}
+
+.section-header {
+    background: linear-gradient(to right, #da3777 0%, #ff7f50 50%, #ffa500 100%);
+    color: linear-gradient(to right, #da3777 0%, #da3777 50%, #da3777 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+}
+
+
+
+.section-content {
+    padding: 10px;
+    text-align: justify;
+}
+
+.section-content-left {
+    float: left;
+    width: 50%;
+}
+
+.section-content-right {
+    padding: 29px;
+    text-transform: uppercase;
+    text-align: left;
+    float: right;
+    width: 50%;
+    font-weight: bold;
+    font-size: large;
+}
+
+.section-content-right span {
+    background: linear-gradient(to right, #da3777 0%, #ff7f50 50%, #ffa500 100%);
+    color: linear-gradient(to right, #da3777 0%, #da3777 50%, #da3777 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    
+}
+
+.section-footer {
+    padding: 10px;
+}
+
+
+@media (max-width: 767.5px){
+    .section {
+        width: 80%;
+    }
+}
+
+@media (max-width: 575px) {
+    .section {
+        width: 90%;
+    }
+}

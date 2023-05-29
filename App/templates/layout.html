@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> {% block title %} 
-                LotusBank
+                AES Encrypted BankApp
             {% endblock title %}
     </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -14,9 +14,11 @@
 
 </head>
 <body>
-
+    {% load static %}
 
     {% block body %}
+
+        <link rel="stylesheet" href="{% static 'layout.css' %}">
     
         {% include 'core/navbar.html' %}
         {% comment %} Contains Link to different pages {% endcomment %}
@@ -60,6 +62,50 @@
         </nav>
 
 
+        {% comment %} About Project {% endcomment %}
+
+        {% comment %} <section class="container">
+            <div class="project-info">
+                
+            </div>
+
+            
+
+            <div class="personal-info">
+                <h2></h2>
+                <h2></h2>
+                <h2>Department: INFORMATION AND COMMUNICATION ENGINEERING</h2>
+                <h2> </h2>
+            </div>
+        </section> {% endcomment %}
+
+        <section class="section">
+            
+            <div class="section-header">
+                <h2>AES Encrypted BankApp</h2>
+            </div>
+            
+            <div class="section-content">
+                <div class="section-content-left">
+                    <h5>ABOUT THIS PROJECT</h5>
+                    <hr>
+                    <p> AES Encrypted BankApp is a web-based banking application built using Django framework. 
+                        This app allows users to manage their accounts by transferring funds to other accounts, withdraw
+                        funds from their accounts and also make deposits while being ensured that their information is protected 
+                        using AES Encryption.
+                    </p>
+                </div>
+                 
+                <div class="section-content-right">
+                    <p>Name: <span> Adedamola Akitoye </span> </p>
+                    <p>Matric Number: <span> 18CK024279 </span> </p>
+                    <p>Department: <span> INFORMATION AND COMMUNICATION ENGINEERING </span> </p>
+                    <p>Supervisor: <span> DR. OSHIN OLUWADAMILOLA </span> </p>
+                </div>
+            </div>
+
+        </section>
+         
     {% endblock body %}
 
     

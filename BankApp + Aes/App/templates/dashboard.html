@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+    LotusBank | Dashboard 
+{% endblock title %}
+
+
+{% block body %}
+
+    {% include 'core/app_navbar.html' %}
+    <link rel="stylesheet" href="{% static 'custom-alert.css' %}">
+    <link rel="stylesheet" href="{% static 'dashBoard.css' %}">
+
+
+    
+    <div class="dashboard">
+        <div class="dashboard-container">
+
+            <div class="intro">
+                <h2>Welcome back, <span>{{ user.username }}!</span></h2>
+                <hr>
+            </div>
+
+            <div class="main-details">
+                <p>Here you can find all your important informations</p> <br>
+
+                    <div class="col-md-12">
+                        <ul>
+                            <li>
+                                <li>First Name: <span>{{ user.first_name }}</span></li>
+                                
+                                <li>Last Name: <span>{{ user.last_name }}</span></li>
+                                <li>Email Address: <span style="text-transform: lowercase">{{ user.email }}</span></li>
+                                <li>Account Number: <span>{{ user_account.account_number }}</span></li>
+                                <li>Account Balance: <span>${{ user_account.account_balance }}</span></li>
+                            </li>
+                        </ul>
+                    </div>
+
+                
+            </div>
+
+            {% comment %} Message Alert For Failed Login & Other Messages {% endcomment %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-custom alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+        
+
+
+    </div>
+      
+      
+      
+
+{% endblock body %}

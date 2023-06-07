@@ -54,6 +54,18 @@ class UserAccount(models.Model):
         self.account_balance -= amount
         self.save()
 
+    # @property
+    # def decrypted_account_number(self):
+    #     # Decrypt the account number and return the plaintext value
+    #     decrypted = aes_combined(self.account_number)
+    #     return decrypted
+
+    # @property
+    # def decrypted_username(self):
+    #     # Decrypt the balance and return the plaintext value
+    #     decrypted = aes_combined(self.username)
+    #     return decrypted
+
 
 # This model is used to allow users deposit into their accounts and their account balance is updated.
 class Deposit(models.Model):

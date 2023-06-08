@@ -201,6 +201,6 @@ def aes_combined(pt):
     print('The final Ciphertext of all messages is:     ')
     return lsF_Cipher
     
-# print(aes_combined('0123456789ABCDEFFEDCBA9876543210'))
+print(aes_combined('0123456789ABCDEFFEDCBA9876543210'))
 
 

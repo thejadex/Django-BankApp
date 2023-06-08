@@ -4,6 +4,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from .AES_encryption_whole import aes_combined
+from .AES_DECRYPT import decrypt
+
 
 """
     Note that these models are fields that are created in the database.
@@ -20,7 +22,7 @@ class EncryptedField(models.TextField):
 
     def to_python(self, value):
         if value is not None:
-            return aes_combined(value)  # Decrypt the value
+            return decrypt(value)  # Decrypt the value
         return value
 
     def get_prep_value(self, value):
@@ -54,17 +56,17 @@ class UserAccount(models.Model):
         self.account_balance -= amount
         self.save()
 
-    # @property
-    # def decrypted_account_number(self):
-    #     # Decrypt the account number and return the plaintext value
-    #     decrypted = aes_combined(self.account_number)
-    #     return decrypted
+    @property
+    def decrypted_account_number(self):
+        # Decrypt the account number and return the plaintext value
+        decrypted = decrypt(self.account_number)
+        return decrypted
 
-    # @property
-    # def decrypted_username(self):
-    #     # Decrypt the balance and return the plaintext value
-    #     decrypted = aes_combined(self.username)
-    #     return decrypted
+    @property
+    def decrypted_username(self):
+        # Decrypt the balance and return the plaintext value
+        decrypted = decrypt(self.username)
+        return decrypted
 
 
 # This model is used to allow users deposit into their accounts and their account balance is updated.

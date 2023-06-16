@@ -225,8 +225,8 @@ def decrypt(txt):
     ltt = 'abcdefghijklmnopqrstuvwxyz'
     ltt = ltt + 'GHIJKLMNOPQRSTUVWXYZ'
     Plaintext = ''.join(lsy)
-    if '' in Plaintext:
-        return Plaintext
+    if '\x01' in Plaintext:
+        return Res
     elif (any([i in ltt for i in Plaintext]) and Plaintext.endswith('0'))\
        or (any([i in ltt for i in Plaintext]) and Plaintext[-1] in '123456789'):
         lk = [i for i in range(len(Plaintext)) if Plaintext[i] in ltt]

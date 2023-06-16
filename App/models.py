@@ -17,7 +17,7 @@ class EncryptedField(models.TextField):
 
     def from_db_value(self, value, expression, connection):
         if value is not None:
-            return aes_combined(value)  # Decrypt the value
+            return aes_combined(value)  # Encrypt the value
         return value
 
     def to_python(self, value):
@@ -62,11 +62,11 @@ class UserAccount(models.Model):
         decrypted = decrypt(self.account_number)
         return decrypted
 
-    @property
-    def decrypted_username(self):
-        # Decrypt the balance and return the plaintext value
-        decrypted = decrypt(self.username)
-        return decrypted
+    # @property
+    # def decrypted_username(self):
+    #     # Decrypt the balance and return the plaintext value
+    #     decrypted = decrypt(self.username)
+    #     return decrypted
 
 
 # This model is used to allow users deposit into their accounts and their account balance is updated.

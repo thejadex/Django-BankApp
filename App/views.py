@@ -113,7 +113,7 @@ def deposit(request):
             user_account.save()
 
             # Message Success for successful deposit
-            messages.success(request, f'Your deposit of ${amount} was successful!')
+            messages.success(request, f'Your deposit of ₦{amount} was successful!')
         return redirect('dashboard')
     else:
         # Displays a blank form if the user's request is a GET request.
@@ -167,7 +167,7 @@ def transfer(request):
                                                    sender_username = request.user.username)
                 transfer.save()
 
-                messages.success(request, f'Your Transfer of ${amount} was successful.')
+                messages.success(request, f'Your Transfer of ₦{amount} was successful.')
                 
                 
                 return redirect('dashboard')
@@ -210,7 +210,7 @@ def withdraw(request):
 
                 user_account.account_balance -= amount
                 user_account.save()
-                messages.success(request, f'Withdrawal of ${amount} was successful!')
+                messages.success(request, f'Withdrawal of ₦{amount} was successful!')
 
             elif amount > user_account.account_balance:
                 messages.error(request, f'Withdrawal cannot be more than your account balance')

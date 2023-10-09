@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    AES Encrypted BankApp | SignUp
+    LOTUS BankApp | SignUp
 {% endblock title %}
     
 {% block body %}
@@ -37,31 +37,31 @@
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label>First Name</label>
-                    <input type="text" name="{{ form.first_name.name }}" value="{{ form.first_name.value }}" id="first_name" class="input-field">
+                    <input type="text" name="{{ form.first_name.name }}" id="first_name" class="input-field">
                 </div>
                 <div class="col-sm-6 mb-3">
                     <label>Last Name</label>
-                    <input type="text" name="{{ form.last_name.name }}" value="{{ form.last_name.value }}" id="last_name" class="input-field">
+                    <input type="text" name="{{ form.last_name.name }}" id="last_name" class="input-field">
                 </div>
             </div>
             <div class="mb-3">
                 <div class="mb-3">
                     <label>{{ form.username.label }}</label>
-                    <input type="text" name="{{ form.username.name }}" value="{{ form.username.value }}" class="input-field" required>
+                    <input type="text" name="{{ form.username.name }}" class="input-field" required>
                 </div>
                 
                 <label>Email Address</label>
-                <input type="email" name="{{ form.email.name }}" value="{{ form.email.value }}" class="input-field" required>
+                <input type="email" name="{{ form.email.name }}" placeholder="@example.com" class="input-field" required>
             </div>
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label>{{ form.password1.label }}</label>
                     {% comment %} <input type="password" name="pwd" id="pwd" class="input-field"> {% endcomment %}
-                    <input type="password" name="{{ form.password1.name }}" value="{{ form.password1.value }}" id="pwd" class="input-field">
+                    <input type="password" name="{{ form.password1.name }}" id="pwd" class="input-field">
                 </div>
                 <div class="col-sm-6 mb-3">
                     <label>Retype Password</label>
-                    <input type="password" name="{{ form.password2.name }}" value="{{ form.password2.value }}" id="pwd" class="input-field">
+                    <input type="password" name="{{ form.password2.name }}" id="pwd" class="input-field">
                 </div>
             </div>
             <div class="mb-3">

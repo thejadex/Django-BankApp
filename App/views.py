@@ -109,7 +109,7 @@ def deposit(request):
             # Get amount and add to existing amount of the user
             amount = float(request.POST.get('amount'))
             user_account = UserAccount.objects.get(user=request.user)
-            user_account.account_balance += amount
+            user_account.account_balance = float(user_account.account_balance) + amount
             user_account.save()
 
             # Message Success for successful deposit
@@ -143,7 +143,7 @@ def transfer(request):
                 return render(request, 'transfer.html', {'form': form})
 
             # Checks if the sender has enough balance to make a transfer.
-            if sender_account.account_balance < amount:
+            if float(sender_account.account_balance) < amount:
 
                 messages.error(request, 'Insufficient balance. Make a deposit')
                 return redirect('dashboard')
@@ -152,6 +152,8 @@ def transfer(request):
             if receiver_account:
 
                 sender_account = UserAccount.objects.get(user=request.user)
+                sender_account.account_balance = float(sender_account.account_balance)
+                receiver_account.account_balance = float(receiver_account.account_balance)
 
                 if sender_account.account_balance >= amount:
                     sender_account.account_balance -= amount
@@ -206,13 +208,14 @@ def withdraw(request):
             user_account = UserAccount
             user_account = UserAccount.objects.get(user=request.user) 
             amount = float(request.POST.get('amount'))
-            if amount <= user_account.account_balance:
-
+            if amount <= float(user_account.account_balance):
+                
+                user_account.account_balance = float(user_account.account_balance)
                 user_account.account_balance -= amount
                 user_account.save()
                 messages.success(request, f'Withdrawal of ${amount} was successful!')
 
-            elif amount > user_account.account_balance:
+            elif amount > float(user_account.account_balance):
                 messages.error(request, f'Withdrawal cannot be more than your account balance')
                 messages.success(request, f'Withdrawal of {amount} was not successful!')
                 

@@ -53,5 +53,11 @@ Install the required packages using pip
         <li>To view the user-facing application, navigate to http://localhost:8000/.</li>
         <li>Use the application to manage accounts, transfer funds, view transaction history, and more.</li>
     </ol> <hr>
+  
+
+<h1>NOTE</h1>
+    <p>When running project, make sure to have internet access to 
+        have a better interface experience.</p>
+    <hr>
 
   

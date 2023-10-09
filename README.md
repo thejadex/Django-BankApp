@@ -56,7 +56,7 @@ Install the required packages using pip
   
 
 <h1>NOTE</h1>
-    <p>When running project, make sure to have internet access to 
+    <p>When running the project, make sure to have internet access to 
         have a better interface experience.</p>
     <hr>
 

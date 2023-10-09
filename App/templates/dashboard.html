@@ -32,8 +32,14 @@
                                 
                                 <li>Last Name: <span>{{ user.last_name }}</span></li>
                                 <li>Email Address: <span style="text-transform: lowercase">{{ user.email }}</span></li>
+<<<<<<< HEAD
                                 <li>Account Number: <span>{{ user_account.account_number }}</span></li>
                                 <li>Account Balance: <span>${{ user_account.account_balance }}</span></li>
+=======
+                                {% comment %} <li>Account Number: <span>{{ user_account.decrypted_account_number }}</span></li> {% endcomment %}
+                                <li>Account Number: <span>{{ user_account.account_number }}</span></li>
+                                <li>Account Balance: <span>₦{{ user_account.account_balance }}</span></li>
+>>>>>>> b9ec106b50624b71c510edf81f5a0f8f5079c58c
                             </li>
                         </ul>
                     </div>
